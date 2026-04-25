@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #3b82f6;
+  --color-primary-start: #3b82f6;
+  --color-primary-end: #8b5cf6;
+  --color-brand-dark: #0f172a; /* Navy đậm cho Dark Mode */
+  --color-brand-card: #1e293b;
+  --color-brand-border: #334155;
+  
+  --color-cv-navy: #1a2b3c; /* Màu Navy đặc trưng của mẫu Lê Chiến */
+}
+
+/* Cấu hình hỗ trợ class .dark cho Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    @apply bg-white text-slate-900 antialiased transition-colors duration-300;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  /* Khi ở chế độ tối */
+  .dark body {
+    @apply bg-[#0b0f1a] text-slate-100;
+  }
+}
+
+@layer components {
+  .input-field {
+    @apply w-full bg-slate-50 dark:bg-brand-card border border-slate-200 dark:border-brand-border p-3.5 rounded-xl outline-none transition-all duration-200 focus:ring-4 focus:ring-primary/10 focus:border-primary dark:text-white placeholder:text-slate-400 shadow-sm;
+  }
+  
+  .btn-primary-gradient {
+    @apply bg-gradient-to-r from-primary-start to-primary-end text-white shadow-lg shadow-primary/20 transition-all hover:shadow-primary/40 active:scale-95 disabled:opacity-70 font-bold;
+  }
+
+  .card-premium {
+    @apply bg-white dark:bg-brand-card rounded-3xl border border-slate-100 dark:border-brand-border shadow-2xl transition-all duration-300;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-200 dark:bg-slate-700 rounded-full;
+}
