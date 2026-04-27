@@ -50,3 +50,86 @@
 ::-webkit-scrollbar-thumb {
   @apply bg-slate-200 dark:bg-slate-700 rounded-full;
 }
+
+/* Print Styles */
+@media print {
+  @page {
+    margin: 0;
+    size: A4;
+  }
+
+  /* Force background colors and images */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    box-sizing: border-box !important;
+  }
+
+  @page {
+    margin: 0 !important;
+    size: A4 !important;
+  }
+
+  body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 210mm !important;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif !important;
+    color: #000 !important;
+  }
+
+  .cv-container, .cv-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    box-shadow: none !important;
+    min-height: 0 !important;
+    
+    /* THE MAGIC: Scale down the entire CV to fit one page */
+    zoom: 0.65; 
+    -moz-transform: scale(0.65);
+    -moz-transform-origin: top left;
+  }
+
+  .section, .cv-section {
+    margin-bottom: 15px !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  h1 { font-size: 28pt !important; margin-bottom: 10px !important; line-height: 1 !important; }
+  h2 { font-size: 16pt !important; margin-bottom: 8px !important; border-bottom: 2px solid #ddd !important; padding-bottom: 4px !important; }
+  h3 { font-size: 14pt !important; margin-bottom: 4px !important; }
+  p, li, span, div { font-size: 12pt !important; line-height: 1.5 !important; }
+
+  .fixed, .print\:hidden, .no-print, button, .print-hide, footer {
+    display: none !important;
+  }
+
+  aside {
+    width: 35% !important;
+    padding: 30pt !important;
+    background-color: #1a2b3c !important;
+    color: white !important;
+  }
+
+  main {
+    flex: 1 !important;
+    padding: 40pt !important;
+    background: white !important;
+  }
+
+  /* Increase Avatar size in print */
+  .size-48, .lg\:size-56 {
+    width: 2.2in !important;
+    height: 2.2in !important;
+    border-width: 8px !important;
+  }
+  
+  a:after { content: none !important; }
+}
