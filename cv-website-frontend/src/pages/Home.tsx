@@ -3,7 +3,7 @@ import {
   Mail, Phone, MapPin, Download,
   Calendar, User, Sun, Moon,
   GraduationCap, Briefcase,
-  Layout, Link
+  Layout, Link as LinkIcon
 } from 'lucide-react';
 import api, { BASE_URL } from '../services/api';
 
@@ -121,7 +121,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-brand-dark p-0 sm:p-4 lg:p-10 transition-colors duration-500 font-sans">
+    <div className="min-h-screen bg-slate-200 dark:bg-brand-dark p-0 sm:p-4 lg:p-10 transition-colors duration-500 font-sans">
 
       {/* Floating Action Buttons */}
       <div className="fixed top-6 right-6 z-50 flex gap-3 print:hidden">
@@ -139,70 +139,70 @@ export default function Home() {
       <div className="max-w-[900px] mx-auto bg-white dark:bg-brand-card shadow-2xl flex flex-col md:flex-row min-h-[1272px] overflow-hidden cv-container cv-wrapper ring-1 ring-slate-200 dark:ring-brand-border">
 
         {/* SIDEBAR - LEFT */}
-        <aside className="w-full md:w-[35%] bg-[#1a2b3c] text-white p-8 space-y-12 shrink-0">
+        <aside className="w-full md:w-[35%] bg-slate-50 dark:bg-[#1a2b3c] text-slate-800 dark:text-white p-8 space-y-12 shrink-0 border-r border-slate-200 dark:border-none">
 
           <div className="flex flex-col items-center space-y-6 pt-4">
-            <div className="size-56 lg:size-64 rounded-full border-[6px] border-white/10 p-2 overflow-hidden bg-slate-700 shadow-2xl">
+            <div className="size-56 lg:size-64 rounded-full border-[6px] border-slate-200 dark:border-white/10 p-2 overflow-hidden bg-slate-100 dark:bg-slate-700 shadow-xl">
               {cv.avatar ? (
                 <img src={getImageUrl(cv.avatar)} alt={cv.fullName} className="w-full h-full object-cover rounded-full" />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-white/20"><User size={90} /></div>
+                <div className="w-full h-full flex items-center justify-center text-slate-400 dark:text-white/20"><User size={90} /></div>
               )}
             </div>
             <div className="text-center space-y-2">
-              <h1 className="text-4xl font-black tracking-tight uppercase leading-tight">{cv.fullName}</h1>
-              <p className="text-lg text-slate-400 font-medium uppercase tracking-wider">{cv.jobTitle}</p>
+              <h1 className="text-4xl font-black tracking-tight uppercase leading-tight text-slate-900 dark:text-white">{cv.fullName}</h1>
+              <p className="text-lg text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">{cv.jobTitle}</p>
             </div>
           </div>
 
           <section className="space-y-2 section">
             <div className="flex items-center gap-4 text-sm font-medium">
-              <div className="size-8 bg-white/10 rounded-full flex items-center justify-center shrink-0"><Phone size={14} /></div>
+              <div className="size-8 bg-slate-200 dark:bg-white/10 rounded-full flex items-center justify-center shrink-0"><Phone size={14} /></div>
               <span>{cv.contact.phone || "---"}</span>
             </div>
             <div className="flex items-center gap-4 text-sm font-medium">
-              <div className="size-8 bg-white/10 rounded-full flex items-center justify-center shrink-0"><Mail size={14} /></div>
+              <div className="size-8 bg-slate-200 dark:bg-white/10 rounded-full flex items-center justify-center shrink-0"><Mail size={14} /></div>
               <span className="truncate">{cv.contact.email || "---"}</span>
             </div>
             <div className="flex items-center gap-4 text-sm font-medium">
-              <div className="size-8 bg-white/10 rounded-full flex items-center justify-center shrink-0"><MapPin size={14} /></div>
+              <div className="size-8 bg-slate-200 dark:bg-white/10 rounded-full flex items-center justify-center shrink-0"><MapPin size={14} /></div>
               <span>{cv.contact.location || "---"}</span>
             </div>
             {cv.contact.linkedin && (
               <div className="flex items-center gap-4 text-sm font-medium">
-                <div className="size-8 bg-white/10 rounded-full flex items-center justify-center shrink-0"><Link size={14} /></div>
-                <a href={cv.contact.linkedin.startsWith('http') ? cv.contact.linkedin : `https://${cv.contact.linkedin}`} target="_blank" rel="noopener noreferrer" className="truncate hover:text-blue-400 transition-colors">
+                <div className="size-8 bg-slate-200 dark:bg-white/10 rounded-full flex items-center justify-center shrink-0"><LinkIcon size={14} /></div>
+                <a href={cv.contact.linkedin.startsWith('http') ? cv.contact.linkedin : `https://${cv.contact.linkedin}`} target="_blank" rel="noopener noreferrer" className="truncate hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   {cv.contact.linkedin.replace(/^https?:\/\/(www\.)?/, '')}
                 </a>
               </div>
             )}
             {cv.birthday && (
               <div className="flex items-center gap-4 text-sm font-medium">
-                <div className="size-8 bg-white/10 rounded-full flex items-center justify-center shrink-0"><Calendar size={14} /></div>
+                <div className="size-8 bg-slate-200 dark:bg-white/10 rounded-full flex items-center justify-center shrink-0"><Calendar size={14} /></div>
                 <span>{cv.birthday}</span>
               </div>
             )}
             {cv.gender && (
               <div className="flex items-center gap-4 text-sm font-medium">
-                <div className="size-8 bg-white/10 rounded-full flex items-center justify-center shrink-0"><User size={14} /></div>
+                <div className="size-8 bg-slate-200 dark:bg-white/10 rounded-full flex items-center justify-center shrink-0"><User size={14} /></div>
                 <span>{cv.gender}</span>
               </div>
             )}
           </section>
 
           <section className="space-y-4 section">
-            <h2 className="text-xl font-black border-b-2 border-white/10 pb-2 uppercase tracking-wider">{t.objective}</h2>
-            <p className="text-[13px] leading-relaxed opacity-80 font-medium">{cv.introduction}</p>
+            <h2 className="text-xl font-black border-b-2 border-slate-200 dark:border-white/10 pb-2 uppercase tracking-wider text-slate-900 dark:text-white">{t.objective}</h2>
+            <p className="text-[13px] leading-relaxed text-slate-600 dark:text-slate-300 font-medium">{cv.introduction}</p>
           </section>
 
           <section className="space-y-4 section">
-            <h2 className="text-xl font-black border-b-2 border-white/10 pb-2 uppercase tracking-wider">{t.skills}</h2>
+            <h2 className="text-xl font-black border-b-2 border-slate-200 dark:border-white/10 pb-2 uppercase tracking-wider text-slate-900 dark:text-white">{t.skills}</h2>
             <div className="space-y-4">
               {cv.skills.length > 0 ? cv.skills.map((skill, index) => (
                 <div key={index} className="space-y-1.5">
-                  <p className="text-xs font-bold opacity-90 uppercase tracking-wide">{skill.name}</p>
-                  <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
-                    <div className="h-full bg-white/40 rounded-full" style={{ width: skill.level }} />
+                  <p className="text-xs font-bold text-slate-700 dark:text-white/90 uppercase tracking-wide">{skill.name}</p>
+                  <div className="h-2 w-full bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-full bg-slate-500 dark:bg-white/40 rounded-full" style={{ width: skill.level }} />
                   </div>
                 </div>
               )) : <p className="text-xs opacity-40 italic">Chưa cập nhật</p>}
@@ -210,10 +210,10 @@ export default function Home() {
           </section>
 
           <section className="space-y-4 section">
-            <h2 className="text-xl font-black border-b-2 border-white/10 pb-2 uppercase tracking-wider">{t.interests}</h2>
-            <ul className="grid grid-cols-2 gap-2 text-sm opacity-80 font-medium">
+            <h2 className="text-xl font-black border-b-2 border-slate-200 dark:border-white/10 pb-2 uppercase tracking-wider text-slate-900 dark:text-white">{t.interests}</h2>
+            <ul className="grid grid-cols-2 gap-2 text-sm text-slate-600 dark:text-white/80 font-medium">
               {cv.interests ? cv.interests.split(',').map((interest, i) => (
-                <li key={i} className="flex items-center gap-2 truncate"><span className="size-1.5 bg-white rounded-full" /> {interest.trim()}</li>
+                <li key={i} className="flex items-center gap-2 truncate"><span className="size-1.5 bg-slate-400 dark:bg-white rounded-full" /> {interest.trim()}</li>
               )) : <li className="text-xs opacity-40 italic">---</li>}
             </ul>
           </section>
