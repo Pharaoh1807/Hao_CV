@@ -3,9 +3,9 @@ import { useForm, useFieldArray } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Cropper from 'react-easy-crop';
-import { 
-  Save, LogOut, Plus, Trash2, User, Briefcase, GraduationCap, Award, 
-  Code, Globe, ChevronLeft, Camera, Mail, Phone, MapPin, 
+import {
+  Save, LogOut, Plus, Trash2, User, Briefcase, GraduationCap, Award,
+  Code, Globe, ChevronLeft, Camera, Mail, Phone, MapPin,
   Link as LinkIcon, Check, Loader2, Sparkles, Sun, Moon, X, Crop,
   Calendar, Heart
 } from 'lucide-react';
@@ -181,13 +181,13 @@ export default function Admin() {
 
   return (
     <div className="min-h-screen bg-[#fcfcfc] dark:bg-brand-dark flex flex-col md:flex-row transition-colors duration-500 font-sans">
-      
+
       {/* Sidebar */}
       <aside className="w-full md:w-72 border-r border-slate-200 dark:border-brand-border shrink-0 md:sticky md:top-0 md:h-screen p-8 flex flex-col bg-white dark:bg-brand-dark z-20">
         <div className="mb-12 flex items-center justify-between px-2">
           <div className="flex items-center gap-3">
             <div className="size-11 bg-[#1a2b3c] rounded-xl flex items-center justify-center shadow-lg shadow-primary/20"><Sparkles size={24} className="text-white" /></div>
-            <span className="font-black text-2xl tracking-tighter dark:text-white uppercase">Console</span>
+            <span className="font-black text-2xl tracking-tighter dark:text-white uppercase">My CV</span>
           </div>
           <button onClick={toggleTheme} className="p-2.5 rounded-xl bg-slate-50 dark:bg-brand-card border border-slate-200 dark:border-brand-border text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
             {isDark ? <Sun size={20} /> : <Moon size={20} />}
