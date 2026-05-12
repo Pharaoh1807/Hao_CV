@@ -9,8 +9,19 @@ import {
   Link as LinkIcon, Check, Loader2, Sparkles, Sun, Moon, X, Crop,
   Calendar, Heart
 } from 'lucide-react';
-import api from '../services/api';
+import api, { BASE_URL } from '../services/api';
 import { useAuth } from '../context/AuthContext';
+
+const getImageUrl = (url: string) => {
+  if (!url) return '';
+  if (url.startsWith('http')) {
+    if (url.includes('localhost:5001')) {
+      return url.replace('http://localhost:5001', BASE_URL);
+    }
+    return url;
+  }
+  return `${BASE_URL}${url}`;
+};
 
 // --- Premium UI Components ---
 
@@ -218,7 +229,7 @@ export default function Admin() {
                     <div className="group relative">
                       <div onClick={() => document.getElementById('avatar-input')?.click()} className="size-44 lg:size-52 rounded-[3.5rem] p-1.5 bg-[#1a2b3c] shadow-2xl transition-all duration-700 hover:scale-105 cursor-pointer">
                         <div className="w-full h-full rounded-[3.25rem] bg-white dark:bg-brand-card overflow-hidden relative border-[6px] border-white dark:border-brand-card">
-                          {uploading ? <div className="w-full h-full flex items-center justify-center bg-slate-50 dark:bg-slate-800"><Loader2 className="animate-spin text-primary" size={32} /></div> : avatarUrl ? <img src={avatarUrl} alt="Avatar" className="w-full h-full object-cover" /> : <div className="w-full h-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-200 dark:text-slate-700"><User size={64} /></div>}
+                          {uploading ? <div className="w-full h-full flex items-center justify-center bg-slate-50 dark:bg-slate-800"><Loader2 className="animate-spin text-primary" size={32} /></div> : avatarUrl ? <img src={getImageUrl(avatarUrl)} alt="Avatar" className="w-full h-full object-cover" /> : <div className="w-full h-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-200 dark:text-slate-700"><User size={64} /></div>}
                           <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500"><Camera size={32} className="text-white mb-2" /><span className="text-[10px] text-white font-black uppercase tracking-[0.2em]">Change Photo</span></div>
                         </div>
                       </div>

@@ -5,7 +5,19 @@ import {
   GraduationCap, Briefcase,
   Layout, Link
 } from 'lucide-react';
-import api from '../services/api';
+import api, { BASE_URL } from '../services/api';
+
+const getImageUrl = (url: string) => {
+  if (!url) return '';
+  if (url.startsWith('http')) {
+    // Nếu link là localhost cũ, thay bằng BASE_URL mới
+    if (url.includes('localhost:5001')) {
+      return url.replace('http://localhost:5001', BASE_URL);
+    }
+    return url;
+  }
+  return `${BASE_URL}${url}`;
+};
 
 interface CVData {
   fullName: string;
@@ -133,7 +145,7 @@ export default function Home() {
           <div className="flex flex-col items-center space-y-6 pt-4">
             <div className="size-56 lg:size-64 rounded-full border-[6px] border-white/10 p-2 overflow-hidden bg-slate-700 shadow-2xl">
               {cv.avatar ? (
-                <img src={cv.avatar} alt={cv.fullName} className="w-full h-full object-cover rounded-full" />
+                <img src={getImageUrl(cv.avatar)} alt={cv.fullName} className="w-full h-full object-cover rounded-full" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-white/20"><User size={90} /></div>
               )}
