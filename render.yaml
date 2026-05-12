@@ -4,7 +4,7 @@ services:
     env: node
     plan: free
     rootDir: cv-website-backend
-    buildCommand: npm install && npm run build && mkdir -p uploads
+    buildCommand: npm install && npm run build && ls -R dist && mkdir -p uploads
     startCommand: node dist/server.js
     envVars:
       - key: NODE_VERSION
@@ -15,3 +15,5 @@ services:
         sync: false
       - key: PORT
         value: 5001
+      - key: NPM_CONFIG_PRODUCTION
+        value: false
