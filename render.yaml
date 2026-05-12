@@ -4,8 +4,8 @@ services:
     env: node
     plan: free
     rootDir: cv-website-backend
-    buildCommand: npm install && npm run build
-    startCommand: npm start
+    buildCommand: npm install && npm run build && mkdir -p uploads
+    startCommand: node dist/server.js
     envVars:
       - key: NODE_VERSION
         value: 20
