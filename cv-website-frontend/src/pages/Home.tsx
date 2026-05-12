@@ -8,16 +8,10 @@ import {
 import api, { BASE_URL } from '../services/api';
 
 const getImageUrl = (url: string) => {
-  console.log('Original URL:', url);
-  console.log('Current BASE_URL:', BASE_URL);
-  
   if (!url) return '';
   if (url.startsWith('http')) {
-    // Thay thế linh hoạt hơn (chấp nhận cả http và https của localhost)
     if (url.includes('localhost:5001')) {
-      const newUrl = url.replace(/https?:\/\/localhost:5001/, BASE_URL);
-      console.log('Fixed URL:', newUrl);
-      return newUrl;
+      return url.replace(/https?:\/\/localhost:5001/, BASE_URL);
     }
     return url;
   }
