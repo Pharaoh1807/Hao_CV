@@ -140,7 +140,7 @@ export default function Home() {
       <div className="max-w-[900px] mx-auto bg-white dark:bg-brand-card shadow-2xl flex flex-col md:flex-row min-h-[1272px] overflow-hidden cv-container cv-wrapper ring-1 ring-slate-200 dark:ring-brand-border print:shadow-none print:ring-0 print:m-0 print:w-full print:min-h-0">
 
         {/* SIDEBAR - LEFT */}
-        <aside className="w-full md:w-[35%] bg-slate-50 dark:bg-[#1a2b3c] text-slate-800 dark:text-white p-8 space-y-12 shrink-0 border-r border-slate-200 dark:border-none print:bg-[#1a2b3c] print:text-white print:border-none print:w-[35%]">
+        <aside className="w-full md:w-[35%] bg-slate-50 dark:bg-cv-navy text-slate-800 dark:text-white p-8 space-y-12 shrink-0 border-r border-slate-200 dark:border-brand-border/30 print:bg-[#1a2b3c] print:text-white print:border-none print:w-[35%]">
 
           <div className="flex flex-col items-center space-y-6 pt-4">
             <div className="size-56 lg:size-64 rounded-full border-[6px] border-slate-200 dark:border-white/10 p-2 overflow-hidden bg-slate-100 dark:bg-slate-700 shadow-xl print:border-white/20 print:bg-slate-700">

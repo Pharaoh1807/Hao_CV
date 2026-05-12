@@ -4,11 +4,10 @@
   --color-primary: #3b82f6;
   --color-primary-start: #3b82f6;
   --color-primary-end: #8b5cf6;
-  --color-brand-dark: #0f172a; /* Navy đậm cho Dark Mode */
-  --color-brand-card: #1e293b;
-  --color-brand-border: #334155;
-  
-  --color-cv-navy: #1a2b3c; /* Màu Navy đặc trưng của mẫu Lê Chiến */
+  --color-brand-dark: #0f172a; 
+  --color-brand-card: #1c2536; /* Màu chính cho nội dung */
+  --color-brand-border: #2d3748;
+  --color-cv-navy: #111b27; /* Màu Sidebar tối hơn để tạo chiều sâu */
 }
 
 /* Cấu hình hỗ trợ class .dark cho Tailwind v4 */
