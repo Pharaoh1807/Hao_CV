@@ -156,7 +156,7 @@ export default function Home() {
             </div>
           </div>
 
-          <section className="space-y-2 section">
+          <section className="space-y-4 section">
             <div className="flex items-center gap-4 text-sm font-medium text-white/90">
               <div className="size-8 bg-white/10 rounded-full flex items-center justify-center shrink-0"><Phone size={14} /></div>
               <span>{cv.contact.phone || "---"}</span>
@@ -178,14 +178,14 @@ export default function Home() {
               </div>
             )}
             {cv.birthday && (
-              <div className="flex items-center gap-4 text-sm font-medium print:text-white">
-                <div className="size-8 bg-slate-200 dark:bg-white/10 rounded-full flex items-center justify-center shrink-0 print:bg-white/10"><Calendar size={14} /></div>
+              <div className="flex items-center gap-4 text-sm font-medium text-white/90">
+                <div className="size-8 bg-white/10 rounded-full flex items-center justify-center shrink-0"><Calendar size={14} /></div>
                 <span>{cv.birthday}</span>
               </div>
             )}
             {cv.gender && (
-              <div className="flex items-center gap-4 text-sm font-medium print:text-white">
-                <div className="size-8 bg-slate-200 dark:bg-white/10 rounded-full flex items-center justify-center shrink-0 print:bg-white/10"><User size={14} /></div>
+              <div className="flex items-center gap-4 text-sm font-medium text-white/90">
+                <div className="size-8 bg-white/10 rounded-full flex items-center justify-center shrink-0"><User size={14} /></div>
                 <span>{cv.gender}</span>
               </div>
             )}
@@ -221,77 +221,73 @@ export default function Home() {
         </aside>
 
         {/* MAIN CONTENT - RIGHT */}
-        <main className="flex-1 p-10 space-y-12 bg-white print:p-10 print:w-[65%]">
+        <main className="flex-1 p-10 lg:p-14 space-y-14 bg-white print:p-10 print:w-[65%]">
           
-          <section className="space-y-6">
-            <h2 className="text-2xl font-black flex items-center gap-3 text-slate-900 print:text-slate-900">
-              <div className="size-10 bg-slate-100 rounded-xl flex items-center justify-center print:bg-slate-100"><Briefcase className="text-primary" /></div>
-              <span className="uppercase tracking-tight">{t.experience}</span>
-            </h2>
-            <div className="space-y-8 border-l-2 border-slate-100 ml-5 pl-8 print:border-slate-100">
-              {cv.experience.length > 0 ? cv.experience.map((exp, index) => (
-                <div key={index} className="relative group">
-                  <div className="absolute -left-[41px] top-1.5 size-4 bg-white border-4 border-primary rounded-full transition-transform group-hover:scale-125 print:bg-white" />
-                  <div className="flex justify-between items-start mb-2">
+          <section className="space-y-6 section">
+            <div className="flex items-center gap-4 text-[#1a2b3c] border-b-4 border-[#1a2b3c] pb-4">
+              <div className="size-10 bg-[#1a2b3c] text-white rounded-full flex items-center justify-center shrink-0"><GraduationCap size={20} /></div>
+              <h2 className="text-2xl font-black uppercase tracking-tight">{t.education}</h2>
+            </div>
+            <div className="space-y-8">
+              {cv.education.length > 0 ? cv.education.map((edu, index) => (
+                <div key={index} className="space-y-3 education-item">
+                  <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="text-xl font-black text-slate-900 print:text-slate-900">{exp.position}</h3>
-                      <p className="text-primary font-bold text-lg">{exp.company}</p>
+                      <h3 className="text-base font-black text-slate-900 uppercase leading-tight">{edu.major}</h3>
+                      <p className="text-sm font-bold text-slate-700">{edu.school}</p>
                     </div>
-                    <span className="text-[11px] font-black px-3 py-1 bg-slate-900 text-white rounded-full uppercase tracking-wider print:bg-slate-800">{exp.startDate} – {exp.endDate}</span>
+                    <span className="text-[13px] font-bold text-slate-500 bg-slate-50 px-3 py-1 rounded-md">{edu.startDate} – {edu.endDate}</span>
                   </div>
-                  <ul className="space-y-2">
-                    {exp.description.split('\n').filter(item => item.trim()).map((item, i) => (
-                      <li key={i} className="text-[13px] text-slate-600 leading-relaxed flex items-start gap-2 print:text-slate-700">
-                        <span className="mt-1.5 size-1.5 bg-primary rounded-full shrink-0" />
-                        {item.trim().startsWith('-') ? item.trim().substring(1).trim() : item.trim()}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-              )) : <p className="text-sm opacity-40 italic">Chưa cập nhật</p>}
+              )) : <p className="text-slate-400 italic text-sm">Chưa cập nhật học vấn.</p>}
             </div>
           </section>
 
-          <section className="space-y-6">
-            <h2 className="text-2xl font-black flex items-center gap-3 text-slate-900 print:text-slate-900">
-              <div className="size-10 bg-slate-100 rounded-xl flex items-center justify-center print:bg-slate-100"><GraduationCap className="text-primary" /></div>
-              <span className="uppercase tracking-tight">{t.education}</span>
-            </h2>
-            <div className="space-y-8 border-l-2 border-slate-100 ml-5 pl-8 print:border-slate-100">
-              {cv.education.length > 0 ? cv.education.map((edu, index) => (
-                <div key={index} className="relative group">
-                  <div className="absolute -left-[41px] top-1.5 size-4 bg-white border-4 border-primary rounded-full transition-transform group-hover:scale-125 print:bg-white" />
+          <section className="space-y-10 section">
+            <div className="flex items-center gap-4 text-[#1a2b3c] border-b-4 border-[#1a2b3c] pb-4">
+              <div className="size-10 bg-[#1a2b3c] text-white rounded-full flex items-center justify-center shrink-0"><Briefcase size={20} /></div>
+              <h2 className="text-2xl font-black uppercase tracking-tight">{t.experience}</h2>
+            </div>
+            <div className="space-y-10">
+              {cv.experience.length > 0 ? cv.experience.map((exp, index) => (
+                <div key={index} className="space-y-3 job-item">
                   <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="text-xl font-black text-slate-900 print:text-slate-900">{edu.major}</h3>
-                      <p className="text-primary font-bold text-lg">{edu.school}</p>
+                      <h3 className="text-lg font-black text-slate-900 leading-tight">{exp.position}</h3>
+                      <p className="text-base font-bold text-slate-700">{exp.company}</p>
                     </div>
-                    <span className="text-[11px] font-black px-3 py-1 bg-slate-900 text-white rounded-full uppercase tracking-wider print:bg-slate-800">{edu.startDate} – {edu.endDate}</span>
+                    <span className="text-[13px] font-bold text-slate-500 bg-slate-50 px-3 py-1 rounded-md">{exp.startDate} – {exp.endDate}</span>
+                  </div>
+                  <div className="space-y-2.5">
+                    {exp.description.split('\n').filter(p => p.trim()).map((point, i) => (
+                      <div key={i} className="flex items-start gap-3 text-sm text-slate-600 leading-relaxed font-medium">
+                        <span className="mt-2 size-1 bg-[#1a2b3c] rounded-full shrink-0" />
+                        {point.trim().startsWith('-') ? point.trim().substring(1).trim() : point.trim()}
+                      </div>
+                    ))}
                   </div>
                 </div>
-              )) : <p className="text-sm opacity-40 italic">Chưa cập nhật</p>}
+              )) : <p className="text-slate-400 italic text-sm">Chưa cập nhật kinh nghiệm.</p>}
             </div>
           </section>
 
           {cv.certificates.length > 0 && (
-            <section className="space-y-6">
-              <h2 className="text-2xl font-black flex items-center gap-3 text-slate-900 print:text-slate-900">
-                <div className="size-10 bg-slate-100 rounded-xl flex items-center justify-center print:bg-slate-100"><Award className="text-primary" /></div>
-                <span className="uppercase tracking-tight">{t.certificates}</span>
-              </h2>
-              <div className="space-y-4 border-l-2 border-slate-100 ml-5 pl-8 print:border-slate-100">
+            <section className="space-y-6 section">
+              <div className="flex items-center gap-4 text-[#1a2b3c] border-b-4 border-[#1a2b3c] pb-4">
+                <div className="size-10 bg-[#1a2b3c] text-white rounded-full flex items-center justify-center shrink-0"><Award size={20} /></div>
+                <h2 className="text-2xl font-black uppercase tracking-tight">{t.certificates}</h2>
+              </div>
+              <div className="space-y-4">
                 {cv.certificates.map((cert, index) => (
-                  <div key={index} className="relative group">
-                    <div className="absolute -left-[41px] top-1.5 size-4 bg-white border-4 border-primary rounded-full transition-transform group-hover:scale-125 print:bg-white" />
-                    <div className="flex justify-between items-start">
-                      <h3 className="font-bold text-slate-800 print:text-slate-800">{cert.name}</h3>
-                      <span className="text-[10px] font-black text-slate-400 uppercase print:text-slate-500">{cert.year}</span>
-                    </div>
+                  <div key={index} className="flex justify-between items-center bg-slate-50 p-4 rounded-xl">
+                    <h3 className="font-bold text-slate-800">{cert.name}</h3>
+                    <span className="text-[12px] font-black text-[#1a2b3c] bg-white px-3 py-1 rounded-full shadow-sm">{cert.year}</span>
                   </div>
                 ))}
               </div>
             </section>
           )}
+
         </main>
       </div>
 
