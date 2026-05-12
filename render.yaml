@@ -3,6 +3,7 @@ services:
     name: cv-website-backend
     env: node
     plan: free
+    rootDir: cv-website-backend
     buildCommand: npm install && npm run build
     startCommand: npm start
     envVars:
@@ -14,4 +15,3 @@ services:
         sync: false
       - key: PORT
         value: 5001
-    rootContext: cv-website-backend
