@@ -4,11 +4,18 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 import path from 'path';
 import multer from 'multer';
+import fs from 'fs';
 import { connectDB } from './config/database';
 import authRoutes from './routes/auth.routes';
 import cvRoutes from './routes/cv.routes';
 
 dotenv.config();
+
+// Đảm bảo thư mục uploads tồn tại
+const uploadDir = 'uploads/';
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
 
 // Cấu hình Multer để lưu ảnh
 const storage = multer.diskStorage({
