@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: cv-website-backend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: MONGODB_URI
+        fromConfigVar: MONGODB_URI
+      - key: JWT_SECRET
+        fromConfigVar: JWT_SECRET
+      - key: PORT
+        value: 5001
+    rootContext: cv-website-backend
