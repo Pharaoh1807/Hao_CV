@@ -124,6 +124,21 @@
     background: white !important;
   }
 
+  /* Force dark text for main content during print, even if in Dark Mode */
+  main, main *, .dark main, .dark main * {
+    color: #1e293b !important;
+  }
+  
+  /* Primary color elements should stay primary */
+  .text-primary, .text-primary *, .dark .text-primary, .dark .text-primary * {
+    color: #3b82f6 !important;
+  }
+
+  /* Sidebar should keep its white text */
+  aside, aside *, .dark aside, .dark aside * {
+    color: white !important;
+  }
+
   /* Increase Avatar size in print */
   .size-48, .lg\:size-56 {
     width: 2.2in !important;
