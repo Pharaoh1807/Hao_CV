@@ -13,10 +13,15 @@ import api, { BASE_URL } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 
 const getImageUrl = (url: string) => {
+  console.log('Admin Preview - Original URL:', url);
+  console.log('Admin Preview - BASE_URL:', BASE_URL);
+  
   if (!url) return '';
   if (url.startsWith('http')) {
     if (url.includes('localhost:5001')) {
-      return url.replace('http://localhost:5001', BASE_URL);
+      const newUrl = url.replace(/https?:\/\/localhost:5001/, BASE_URL);
+      console.log('Admin Preview - Fixed URL:', newUrl);
+      return newUrl;
     }
     return url;
   }
